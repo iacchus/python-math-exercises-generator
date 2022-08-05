@@ -50,6 +50,35 @@ my_option = \
                  help='Your answer to question..')
 
 
+# ┌─────┐
+# │ ETC │
+# └─────┘
+
+
+QUESTION_CLASSES = dict()
+
+def register_question_class(cls, *args, **kwargs):
+    """Decorator for question classes.
+
+    Classes decorated with this decorator will be registered in the
+    `QUESTION_CLASSES` global.
+    """
+
+    global QUESTION_CLASSES
+
+    QUESTION_CLASSES.update({cls.name: cls})
+
+    return cls
+
+class QuestionBase:
+    def __init__(self, *args, **kwargs):
+        pass
+
+@register_question_class()
+class Addition(QuestionBase):
+    def __init__(self, *args, **kwargs):
+        super(Addition, self).__init__(*args, **kwargs)
+
 # ┌──────────┐
 # │ COMMANDS │
 # └──────────┘
