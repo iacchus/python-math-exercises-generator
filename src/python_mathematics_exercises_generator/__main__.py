@@ -54,6 +54,7 @@ my_option = \
 # │ COMMANDS │
 # └──────────┘
 
+add_epilog = "Adds two numbers"
 
 @cli.command(options_metavar='[options]', epilog=add_epilog)
 @my_option
